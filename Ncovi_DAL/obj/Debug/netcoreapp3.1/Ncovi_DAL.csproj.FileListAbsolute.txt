@@ -1,0 +1,15 @@
+E:\Web_Ncovi\Ncovi_DAL\bin\Debug\netcoreapp3.1\Ncovi_DAL.deps.json
+E:\Web_Ncovi\Ncovi_DAL\bin\Debug\netcoreapp3.1\Ncovi_DAL.dll
+E:\Web_Ncovi\Ncovi_DAL\obj\Debug\netcoreapp3.1\Ncovi_DAL.csprojAssemblyReference.cache
+E:\Web_Ncovi\Ncovi_DAL\obj\Debug\netcoreapp3.1\Ncovi_DAL.AssemblyInfoInputs.cache
+E:\Web_Ncovi\Ncovi_DAL\obj\Debug\netcoreapp3.1\Ncovi_DAL.AssemblyInfo.cs
+E:\Web_Ncovi\Ncovi_DAL\bin\Debug\netcoreapp3.1\Ncovi_DAL.runtimeconfig.json
+E:\Web_Ncovi\Ncovi_DAL\bin\Debug\netcoreapp3.1\Ncovi_DAL.runtimeconfig.dev.json
+E:\Web_Ncovi\Ncovi_DAL\bin\Debug\netcoreapp3.1\Ncovi_DAL.pdb
+E:\Web_Ncovi\Ncovi_DAL\bin\Debug\netcoreapp3.1\Ncovi_Common.dll
+E:\Web_Ncovi\Ncovi_DAL\bin\Debug\netcoreapp3.1\Ncovi_Common.pdb
+E:\Web_Ncovi\Ncovi_DAL\obj\Debug\netcoreapp3.1\Ncovi_DAL.csproj.CoreCompileInputs.cache
+E:\Web_Ncovi\Ncovi_DAL\obj\Debug\netcoreapp3.1\Ncovi_DAL.csproj.CopyComplete
+E:\Web_Ncovi\Ncovi_DAL\obj\Debug\netcoreapp3.1\Ncovi_DAL.dll
+E:\Web_Ncovi\Ncovi_DAL\obj\Debug\netcoreapp3.1\Ncovi_DAL.pdb
+E:\Web_Ncovi\Ncovi_DAL\obj\Debug\netcoreapp3.1\Ncovi_DAL.genruntimeconfig.cache
