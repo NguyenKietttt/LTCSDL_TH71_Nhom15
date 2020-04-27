@@ -15,27 +15,15 @@ namespace Ncovi_BLL
         public SingleRsp AddCases()
         {
             var res = new SingleRsp();
-
             CountrySvc countrySvc = new CountrySvc();
-            List<CaseReqByCountry> addList = new List<CaseReqByCountry>();
 
             List<Countries> countries = countrySvc.All.ToList();
-            List<CaseReqByCountry> country2s = GetCase.Instance.GetCaseByCountry();
+            List<CaseReqByCountry> countryByAPI = GetCase.Instance.GetCaseByCountry();
 
-            foreach (var i in countries)
-            {
-                foreach (var j in country2s)
-                {
-                    if (i.CountryId == j.CountryCode)
-                    {
-                        addList.Add(j);
-                        country2s.Remove(j);
-                        break;
-                    }
-                }
-            }
+            var hashedIds = new HashSet<string>(countries.Select(p => p.CountryId));
+            var filteredList = countryByAPI.Where(p => hashedIds.Contains(p.CountryCode)).ToList();
 
-            res = _rep.AddCases(addList);
+            res = _rep.AddCases(filteredList);
 
             return res;
         }

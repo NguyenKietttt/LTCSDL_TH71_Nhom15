@@ -20,18 +20,15 @@ namespace Ncovi_DAL
                 {
                     try
                     {
-                        foreach (var item in listCases)
+                        listCases.ForEach(p => context.Add(new Cases
                         {
-                            var t = context.Add(new Cases
-                            {
-                                Date = item.Date,
-                                Confirmed = item.TotalConfirmed,
-                                Deaths = item.TotalDeaths,
-                                Recovered = item.TotalRecovered,
-                                Active = item.TotalConfirmed - (item.TotalDeaths + item.TotalRecovered),
-                                CountryId = item.CountryCode
-                            });
-                        }
+                            Date = p.Date,
+                            Confirmed = p.TotalConfirmed,
+                            Deaths = p.TotalDeaths,
+                            Recovered = p.TotalRecovered,
+                            Active = p.TotalConfirmed - (p.TotalDeaths + p.TotalRecovered),
+                            CountryId = p.CountryCode
+                        }));
 
                         context.SaveChanges();
                         tran.Commit();
