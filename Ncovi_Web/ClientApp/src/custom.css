@@ -1,14 +1,23 @@
-/* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
+.trigger {
+  font-size: 18px;
+  line-height: 64px;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: color 0.3s;
 }
 
-code {
-  color: #E01A76;
+.trigger:hover {
+  color: #1890ff;
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.logo {
+  height: 32px;
+  margin: 16px;
+  color: white;
+  font-weight: 800;
+  text-align: center;
+}
+
+.site-layout .site-layout-background {
+  background: #fff;
 }
