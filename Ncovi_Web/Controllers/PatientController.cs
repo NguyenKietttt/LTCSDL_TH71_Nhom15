@@ -7,27 +7,25 @@ using Microsoft.AspNetCore.Mvc;
 using Ncov_BLL;
 using Ncovi_Common.Rsp;
 
-namespace Ncovi_Web.Controllers
+namespace Ncov_Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CasesController : ControllerBase
+    public class PatientController : ControllerBase
     {
-        private readonly CasesSvc _svc;
+        private readonly PatientSvc _svc;
 
-        public CasesController()
+        public PatientController()
         {
-            _svc = new CasesSvc();
+            _svc = new PatientSvc();
         }
 
-        [HttpPost("Add")]
+        [HttpGet("Test")]
         public IActionResult AddCases()
         {
-            var res = new SingleRsp();
+            _svc.CheckPatients();
 
-            res = _svc.AddCases();
-
-            return Ok(res);
+            return Ok();
         }
     }
 }

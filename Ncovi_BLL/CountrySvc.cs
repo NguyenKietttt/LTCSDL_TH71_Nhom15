@@ -1,16 +1,18 @@
 ﻿using Ncovi_Common.BLL;
 using Ncovi_Common.Rsp;
-using Ncovi_DAL;
-using Ncovi_DAL.Models;
+using Ncov_DAL;
+using Ncov_DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Ncovi_Common.Req;
 
-namespace Ncovi_BLL
+namespace Ncov_BLL
 {
     public class CountrySvc : GenericSvc<CountryRep, Countries>
     {
+        #region Methods
         public SingleRsp GetAllCountry()
         {
             var res = new SingleRsp();
@@ -20,5 +22,15 @@ namespace Ncovi_BLL
 
             return res;
         }
+
+        public List<CaseReqByCountry> GetCase_ByCountry_FromWeb()
+        {
+            string url = "https://api.covid19api.com/summary";
+
+            List<CaseReqByCountry> listCase = GetData.Instance.ConvertJson_ToClass<CaseReqRoot>(url).Countries;
+
+            return listCase.ToList();
+        }
+        #endregion
     }
 }

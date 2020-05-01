@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Ncovi_DAL.Models
+namespace Ncov_DAL.Models
 {
     public partial class Cases
     {

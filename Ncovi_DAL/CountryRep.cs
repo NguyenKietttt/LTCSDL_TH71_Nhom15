@@ -1,13 +1,13 @@
 ﻿using Ncovi_Common.DAL;
-using Ncovi_DAL.Models;
+using Ncov_DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Ncovi_DAL
+namespace Ncov_DAL
 {
-    public class CountryRep : GenericRep<NcoviContext, Countries>
+    public class CountryRep : GenericRep<NcovContext, Countries>
     {
         #region Methods
         public IQueryable<Countries> GetAllCountry()

@@ -31,9 +31,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Ncovi_BLL\Ncovi_BLL.csproj" />
-    <ProjectReference Include="..\Ncovi_Common\Ncovi_Common.csproj" />
-    <ProjectReference Include="..\Ncovi_DAL\Ncovi_DAL.csproj" />
+    <ProjectReference Include="..\Ncovi_BLL\Ncov_BLL.csproj" />
+    <ProjectReference Include="..\Ncovi_Common\Ncov_Common.csproj" />
+    <ProjectReference Include="..\Ncovi_DAL\Ncov_DAL.csproj" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

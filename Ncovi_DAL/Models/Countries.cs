@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Ncovi_DAL.Models
+namespace Ncov_DAL.Models
 {
     public partial class Countries
     {
         public Countries()
         {
             Cases = new HashSet<Cases>();
+            Patients = new HashSet<Patients>();
         }
 
         public string CountryId { get; set; }
@@ -16,5 +17,6 @@ namespace Ncovi_DAL.Models
         public double? Longitude { get; set; }
 
         public virtual ICollection<Cases> Cases { get; set; }
+        public virtual ICollection<Patients> Patients { get; set; }
     }
 }

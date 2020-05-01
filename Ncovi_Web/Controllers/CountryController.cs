@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Ncovi_BLL;
+using Ncov_BLL;
 using Ncovi_Common.Rsp;
 
 namespace Ncovi_Web.Controllers
@@ -20,7 +20,7 @@ namespace Ncovi_Web.Controllers
             _svc = new CountrySvc();
         }
 
-        [HttpPost("Get-all-country")]
+        [HttpPost("Get-all")]
         public IActionResult GetAllCountry()
         {
             var res = new SingleRsp();
