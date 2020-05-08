@@ -65,11 +65,14 @@ namespace Ncov_DAL
             return res;
         }
 
-        public IQueryable<Cities> GetAllCities()
+        public List<Cities> GetAllCities()
         {
-            var res = All;
+            using (var context = new NcovContext())
+            {
+                var res = context.Cities.ToList();
 
-            return res;
+                return res;
+            }
         }
         #endregion
     }

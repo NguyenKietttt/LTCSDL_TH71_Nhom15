@@ -5,12 +5,15 @@ using Ncov_DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using Ncov_Common.Req;
 
 namespace Ncov_DAL
 {
     public class CasesRep : GenericRep<NcovContext, Cases>
     {
-        public SingleRsp AddCases(List<CaseReqByCountry> listCases)
+        public SingleRsp AddCases(List<Cases> listCases)
         {
             var res = new SingleRsp();
 
@@ -20,15 +23,7 @@ namespace Ncov_DAL
                 {
                     try
                     {
-                        listCases.ForEach(p => context.Add(new Cases
-                        {
-                            Date = p.Date,
-                            Confirmed = p.TotalConfirmed,
-                            Deaths = p.TotalDeaths,
-                            Recovered = p.TotalRecovered,
-                            Active = p.TotalConfirmed - (p.TotalDeaths + p.TotalRecovered),
-                            CountryId = p.CountryCode
-                        }));
+                        context.AddRange(listCases);
 
                         context.SaveChanges();
                         tran.Commit();
@@ -42,6 +37,37 @@ namespace Ncov_DAL
             }
 
             return res;
+        }
+
+        public List<CasesName> GetAllCases_Have_CountryName()
+        {
+            using (var context = new NcovContext())
+            {
+                var listCases = from co in context.Countries
+                                join ca in context.Cases on co.CountryId equals ca.CountryId
+                                orderby ca.Deaths descending
+                                where ca.Date == context.Cases.Max(p => p.Date)
+                                select new CasesName
+                                {
+                                    CountryName = co.Name,
+                                    Confirmed = ca.Confirmed,
+                                    Active = ca.Active,
+                                    Recovered = ca.Recovered,
+                                    Deaths = ca.Deaths
+                                };
+
+                return listCases.ToList();
+            }
+        }
+
+        public List<Cases> GetGlobalCases()
+        {
+            using (var context = new NcovContext())
+            {
+                var res = context.Cases.FromSqlRaw("exec Global").ToList();
+
+                return res;
+            }
         }
     }
 }

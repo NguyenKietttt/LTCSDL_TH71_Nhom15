@@ -17,8 +17,15 @@ namespace Ncov_BLL
         {
             var res = new SingleRsp();
 
-            var m = _rep.GetAllCountry();
-            res.Data = m;
+            var countries = _rep.GetAllCountry();
+            res.Data = countries;
+
+            return res;
+        }
+
+        public HashSet<string> GetAllCountryID()
+        {
+            var res = _rep.GetAllCountryID();
 
             return res;
         }

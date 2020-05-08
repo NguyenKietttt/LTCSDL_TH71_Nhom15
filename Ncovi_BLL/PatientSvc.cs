@@ -1,5 +1,4 @@
 ﻿using HtmlAgilityPack;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Ncov_Common.Req;
 using Ncov_DAL;
 using Ncov_DAL.Models;
@@ -7,9 +6,7 @@ using Ncovi_Common.BLL;
 using Ncovi_Common.Rsp;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Text;
 
 namespace Ncov_BLL
 {
@@ -57,7 +54,37 @@ namespace Ncov_BLL
             return res;
         }
 
-        public List<PatientReq> GetPatient_FromWeb()
+        public SingleRsp GetListPatients()
+        {
+            var res = new SingleRsp();
+
+            var countries = _rep.GetListPatients();
+            res.Data = countries;
+
+            return res;
+        }
+
+        public void CheckPatients()
+        {
+            var res = new SingleRsp();
+
+            List<Patients> patients = _rep.GetAllPatients();
+            List<PatientReq> patientReqs = GetPatient_FromWeb();
+
+            if (patients.Count != 0)
+            {
+                var hashedIds = new HashSet<string>(patients.Select(p => p.PatientId));
+                var joinList = patientReqs.Where(p => hashedIds.Contains(p.PatientId)).ToList();
+                var distinctList = patientReqs.Except(joinList).ToList();
+
+                UpdatePatients(joinList);
+                AddPatients(distinctList);
+            }
+            else
+                AddPatients(patientReqs);
+        }
+
+        private List<PatientReq> GetPatient_FromWeb()
         {
             string htmlString = GetData.Instance.GetData_FromWeb("https://ncov.moh.gov.vn");
 
@@ -96,26 +123,6 @@ namespace Ncov_BLL
                 }
             }
             return listPatients;
-        }
-
-        public void CheckPatients()
-        {
-            var res = new SingleRsp();
-
-            List<Patients> patients = All.ToList();
-            List<PatientReq> patientReqs = GetPatient_FromWeb();
-
-            if (patients.Count != 0)
-            {
-                var hashedIds = new HashSet<string>(patients.Select(p => p.PatientId));
-                var joinList = patientReqs.Where(p => hashedIds.Contains(p.PatientId)).ToList();
-                var distinctList = patientReqs.Except(joinList).ToList();
-
-                UpdatePatients(joinList);
-                AddPatients(distinctList);
-            }
-            else
-                AddPatients(patientReqs);
         }
     }
 }

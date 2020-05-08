@@ -11,29 +11,31 @@ namespace Ncov_Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CityController : ControllerBase
+    public class NewsController : ControllerBase
     {
-        private readonly CitySvc _svc;
+        private readonly NewsSvc _svc;
 
-        public CityController()
+        public NewsController()
         {
-            _svc = new CitySvc();
+            _svc = new NewsSvc();
         }
 
-        [HttpGet("Add-or-Update")]
-        public IActionResult AddCases()
-        {
-            _svc.CheckCities();
-
-            return Ok();
-        }
-
-        [HttpPost("Get-all")]
-        public IActionResult GetAllCity()
+        [HttpGet("Add")]
+        public IActionResult GetAllCountry()
         {
             var res = new SingleRsp();
 
-            res = _svc.GetAllCities();
+            res = _svc.AddNews();
+
+            return Ok(res);
+        }
+
+        [HttpPost("Get-all")]
+        public IActionResult GetAllNews()
+        {
+            var res = new SingleRsp();
+
+            res = _svc.GetListNews();
 
             return Ok(res);
         }

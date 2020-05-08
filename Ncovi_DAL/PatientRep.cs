@@ -3,7 +3,7 @@ using Ncovi_Common.DAL;
 using Ncovi_Common.Rsp;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 namespace Ncov_DAL
 {
     public class PatientRep : GenericRep<NcovContext, Patients>
@@ -59,6 +59,33 @@ namespace Ncov_DAL
             }
 
             return res;
+        }
+
+        public List<Patients> GetAllPatients()
+        {
+            using (var context = new NcovContext())
+            {
+                var res = context.Patients.ToList();
+
+                return res;
+            }
+        }
+
+        public object GetListPatients()
+        {
+            using (var context = new NcovContext())
+            {
+                var res = context.Patients.Select(p => new
+                {
+                    PatientId = p.PatientId.Trim(),
+                    Age = p.Age,
+                    Sex = p.Sex,
+                    Status = p.Status,
+                    CityName = p.CityName
+                }).OrderBy(p => p.Status).ToList();
+
+                return res;
+            }
         }
         #endregion
     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Ncov_Common.Req;
 
 namespace Ncov_DAL.Models
 {
@@ -20,6 +21,7 @@ namespace Ncov_DAL.Models
         public virtual DbSet<Cases> Cases { get; set; }
         public virtual DbSet<Cities> Cities { get; set; }
         public virtual DbSet<Countries> Countries { get; set; }
+        public virtual DbSet<News> News { get; set; }
         public virtual DbSet<Patients> Patients { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -36,7 +38,7 @@ namespace Ncov_DAL.Models
             modelBuilder.Entity<Cases>(entity =>
             {
                 entity.HasKey(e => new { e.Date, e.CountryId })
-                    .HasName("PK__Cases__96356B0DF84F123B");
+                    .HasName("PK__Cases__96356B0DF55C263F");
 
                 entity.Property(e => e.Date).HasColumnType("date");
 
@@ -69,6 +71,26 @@ namespace Ncov_DAL.Models
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<News>(entity =>
+            {
+                entity.HasKey(e => e.NewId)
+                    .HasName("PK__News__7CC3769ED0432285");
+
+                entity.Property(e => e.NewId)
+                    .HasColumnName("NewID")
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.Date).HasColumnType("date");
+
+                entity.Property(e => e.Description).HasMaxLength(200);
+
+                entity.Property(e => e.Link).HasColumnType("ntext");
+
+                entity.Property(e => e.Picture).HasColumnType("ntext");
+
+                entity.Property(e => e.Title).HasMaxLength(100);
             });
 
             modelBuilder.Entity<Patients>(entity =>

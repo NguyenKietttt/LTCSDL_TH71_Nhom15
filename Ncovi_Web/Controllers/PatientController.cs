@@ -20,12 +20,22 @@ namespace Ncov_Web.Controllers
             _svc = new PatientSvc();
         }
 
-        [HttpGet("Test")]
+        [HttpGet("Add")]
         public IActionResult AddCases()
         {
             _svc.CheckPatients();
 
             return Ok();
+        }
+
+        [HttpPost("Get-all")]
+        public IActionResult GetAllCountry()
+        {
+            var res = new SingleRsp();
+
+            res = _svc.GetListPatients();
+
+            return Ok(res);
         }
     }
 }

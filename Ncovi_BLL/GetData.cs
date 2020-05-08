@@ -51,6 +51,7 @@ namespace Ncov_BLL
         {   get => codeCountries; 
             private set => codeCountries = value; 
         }
+
         #endregion
 
         #region Methods

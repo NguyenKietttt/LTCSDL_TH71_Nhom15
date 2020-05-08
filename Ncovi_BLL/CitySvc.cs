@@ -58,13 +58,13 @@ namespace Ncov_BLL
         {
             var res = new SingleRsp();
 
-            var m = _rep.GetAllCities();
+            var m = _rep.GetAllCities().OrderByDescending(p => p.TotalCase);
             res.Data = m;
 
             return res;
         }
 
-        public List<CityReq> GetCase_ByCity_FromWeb()
+        private List<CityReq> GetCase_ByCity_FromWeb()
         {
             string htmlString = GetData.Instance.GetData_FromWeb("https://ncov.moh.gov.vn");
 
@@ -93,7 +93,7 @@ namespace Ncov_BLL
         {
             var res = new SingleRsp();
 
-            List<Cities> cities = All.ToList();
+            List<Cities> cities = _rep.GetAllCities();
             List<CityReq> cityReqs = GetCase_ByCity_FromWeb();
 
             if (cities.Count != 0)

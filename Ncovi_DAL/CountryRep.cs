@@ -10,11 +10,24 @@ namespace Ncov_DAL
     public class CountryRep : GenericRep<NcovContext, Countries>
     {
         #region Methods
-        public IQueryable<Countries> GetAllCountry()
+        public List<Countries> GetAllCountry()
         {
-            var res = All;
+            using (var context = new NcovContext())
+            {
+                var res = context.Countries.ToList();
 
-            return res;
+                return res;
+            }
+        }
+
+        public HashSet<string> GetAllCountryID()
+        {
+            using (var context = new NcovContext())
+            {
+                var res = context.Countries.Select(p => p.CountryId).ToHashSet();
+
+                return res;
+            }
         }
         #endregion
     }

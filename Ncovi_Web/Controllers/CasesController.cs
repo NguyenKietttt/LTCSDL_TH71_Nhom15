@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Ncov_BLL;
+using Ncov_DAL;
 using Ncovi_Common.Rsp;
 
 namespace Ncovi_Web.Controllers
@@ -20,12 +21,34 @@ namespace Ncovi_Web.Controllers
             _svc = new CasesSvc();
         }
 
-        [HttpPost("Add")]
+        [HttpGet("Add")]
         public IActionResult AddCases()
         {
             var res = new SingleRsp();
 
             res = _svc.AddCases();
+
+            return Ok(res);
+        }
+
+        [HttpPost("Get-Case-Pages")]
+        public IActionResult GetCasePages([FromBody]PageReq req)
+        {
+            var res = new SingleRsp();
+            var temp = _svc.GetCasePages(req.Keyword = "", req.Page, req.Size);
+
+            res.Data = temp; 
+
+            return Ok(res);
+        }
+
+        [HttpPost("Get-Global")]
+        public IActionResult GetGlobal()
+        {
+            var res = new SingleRsp();
+            var temp = _svc.GetGlobalCases();
+
+            res.Data = temp;
 
             return Ok(res);
         }
