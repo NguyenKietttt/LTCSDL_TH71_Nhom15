@@ -98,7 +98,7 @@ namespace Ncov_BLL
 
             if (cities.Count != 0)
             {
-                var hashedIds = new HashSet<string>(cities.Select(p => p.CityName));
+                var hashedIds = new HashSet<string>(cities.Select(p => p.CityName.Trim()));
                 var joinList = cityReqs.Where(p => hashedIds.Contains(p.CityName)).ToList();
                 var distinctList = cityReqs.Except(joinList).ToList();
 
