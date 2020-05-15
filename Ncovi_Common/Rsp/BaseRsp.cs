@@ -6,6 +6,7 @@ namespace Ncovi_Common.Rsp
 {
     public class BaseRsp
     {
+
         #region -- Methods --
 
         /// <summary>
