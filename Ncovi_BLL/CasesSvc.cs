@@ -87,7 +87,7 @@ namespace Ncov_BLL
                 CasesReqByID casesReqByID = new CasesReqByID();
                 if (i + 1  < casesArr.Length)
                 {
-                    casesReqByID.Date = casesArr[i].Date.ToString().Substring(0, 10);
+                    casesReqByID.Date = casesArr[i].Date.ToString().Substring(0, 10).Trim();
                     casesReqByID.NewConfirmed = casesArr[i].Confirmed - casesArr[i + 1].Confirmed;
                     casesReqByID.NewRecovered = casesArr[i].Recovered - casesArr[i + 1].Recovered;
 
