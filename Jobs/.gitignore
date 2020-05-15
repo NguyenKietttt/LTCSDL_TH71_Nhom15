@@ -1,6 +1,43 @@
 
-# Created by https://www.gitignore.io/api/visualstudio
-# Edit at https://www.gitignore.io/?templates=visualstudio
+# Created by https://www.gitignore.io/api/react,dotnetcore,visualstudio,visualstudiocode
+# Edit at https://www.gitignore.io/?templates=react,dotnetcore,visualstudio,visualstudiocode
+
+### DotnetCore ###
+# .NET Core build folders
+/bin
+/obj
+
+# Common node modules locations
+/node_modules
+/wwwroot/node_modules
+
+
+### react ###
+.DS_*
+*.log
+logs
+**/*.backup.*
+**/*.back.*
+
+node_modules
+bower_components
+
+*.sublime*
+
+psd
+thumb
+sketch
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
 
 ### VisualStudio ###
 ## Ignore Visual Studio temporary files, build results, and
@@ -88,7 +125,6 @@ StyleCopReport.xml
 *.tmp
 *.tmp_proj
 *_wpftmp.csproj
-*.log
 *.vspscc
 *.vssscc
 .builds
@@ -352,4 +388,5 @@ healthchecksdb
 # Backup folder for Package Reference Convert tool in Visual Studio 2017
 MigrationBackup/
 
-# End of https://www.gitignore.io/api/visualstudio
+# End of https://www.gitignore.io/api/react,dotnetcore,visualstudio,visualstudiocode
+

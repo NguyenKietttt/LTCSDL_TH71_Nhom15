@@ -21,7 +21,7 @@ namespace Ncov_Web.Controllers
         }
 
         [HttpGet("Add-or-Update")]
-        public IActionResult AddCases()
+        public IActionResult AddCases_By_Cities()
         {
             _svc.CheckCities();
 

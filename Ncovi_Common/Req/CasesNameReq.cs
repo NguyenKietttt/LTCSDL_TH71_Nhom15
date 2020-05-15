@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Ncov_Common.Req
 {
-    public class CasesName
+    public class CasesNameReq
     {
         public string CountryName { get; set; }
         public int? Confirmed { get; set; }
