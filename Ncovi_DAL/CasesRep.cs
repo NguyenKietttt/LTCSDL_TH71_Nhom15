@@ -79,5 +79,15 @@ namespace Ncov_DAL
                 return res;
             }
         }
+
+        public List<Cases> GetNewestCases_ByCountryID(string countryID)
+        {
+            using (var context = new NcovContext())
+            {
+                var res = context.Cases.FromSqlRaw("exec NewestCaseByID @CountryID = '" + countryID + "'").ToList();
+
+                return res;
+            }
+        }
     }
 }

@@ -54,6 +54,21 @@ namespace Ncov_BLL
             return res;
         }
 
+        public object GetNewestCases_ByCountryID(string countryID)
+        {
+            var NewestCase = _rep.GetNewestCases_ByCountryID(countryID);
+
+            var res = NewestCase.Select(p => new
+            {
+                CountryId = p.CountryId.Trim(),
+                Confirmed = p.Confirmed,
+                Deaths = p.Deaths,
+                Recovered = p.Recovered,
+                Active = p.Active
+            });
+            return res;
+        }
+
         public object GetCasePages(string keyWord, int page, int size)
         {
             var temp = _rep.GetAllCases_Have_CountryName().Where(p => p.CountryName.Contains(keyWord));
