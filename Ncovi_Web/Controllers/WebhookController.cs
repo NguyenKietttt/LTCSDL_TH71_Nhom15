@@ -19,6 +19,10 @@ namespace Ncov_Web.Controllers
     {
         private static readonly JsonParser jsonParser = new JsonParser(JsonParser.Settings.Default.WithIgnoreUnknownFields(true));
         private readonly CasesSvc _svc;
+		public WebhookController()
+		{
+			_svc = new CasesSvc();
+		}
 		[HttpPost]
 		public async Task<JsonResult> GetWebhookResponse()
 		{
@@ -35,12 +39,11 @@ namespace Ncov_Web.Controllers
 			var pas = request.QueryResult.Parameters;
 			var askingName = pas.Fields.ContainsKey("name") && pas.Fields["name"].ToString().Replace('\"', ' ').Trim().Length > 0;
 			var askingCountryCase = pas.Fields.ContainsKey("country");
-			var countryAsking = pas.Fields["country"].StringValue;
+
+			
 			var response = new WebhookResponse();
 			
-			var temp = _svc.GetCase_byCountry(countryAsking);
-			var res = new SingleRsp();
-			res.Data = temp;	
+	
 			
 			string name = "Tai";
 			StringBuilder sb = new StringBuilder();
@@ -51,7 +54,10 @@ namespace Ncov_Web.Controllers
 			}
 
 			if (askingCountryCase) {
-				sb.Append("This country have"+ temp[1].Active +"Active ");
+				var countryAsking = pas.Fields["country"].StringValue;
+				string nameCountry = countryAsking;
+				var temp = _svc.GetCase_byCountry(nameCountry);
+				sb.Append("This country have"+ temp[0].Active + "Active ");
 			}
 			
 
