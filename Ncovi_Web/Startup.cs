@@ -28,6 +28,11 @@ namespace Ncovi_Web
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.Configure<IISServerOptions>(options =>
+            {
+                options.AllowSynchronousIO = true;
+            });
+            
             services.AddControllersWithViews();
 
             // In production, the React files will be served from this directory

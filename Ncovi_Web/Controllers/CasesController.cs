@@ -49,7 +49,7 @@ namespace Ncovi_Web.Controllers
             var temp = _svc.GetGlobalCases();
 
             res.Data = temp;
-
+            
             return Ok(res);
         }
     }

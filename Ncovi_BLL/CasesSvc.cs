@@ -87,6 +87,14 @@ namespace Ncov_BLL
 
             return filteredList;
         }
+        public List<CasesName> GetCase_byCountry(string keyWord)
+        {
+            var temp = _rep.GetAllCases_Have_CountryName().Where(p => p.CountryName.Contains(keyWord));
+            var data = temp.Where(p => p.CountryName == keyWord.Trim()).ToList();
+
+            
+            return data;
+        }
         #endregion
     }
 }
