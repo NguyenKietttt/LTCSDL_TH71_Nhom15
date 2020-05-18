@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Ncovi_Common\Ncovi_Common.csproj" />
+    <ProjectReference Include="..\Ncovi_Common\Ncov_Common.csproj" />
   </ItemGroup>
 
 </Project>

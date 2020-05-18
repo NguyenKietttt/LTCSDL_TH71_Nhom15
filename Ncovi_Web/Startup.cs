@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System;
+using dotenv.net;
 
 namespace Ncovi_Web
 {
@@ -15,6 +16,10 @@ namespace Ncovi_Web
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
+            // Add connection string from environment variable.
+            DotEnv.Config();
+            Ncov_DAL.Models.NcovContext.myConnection = Environment.GetEnvironmentVariable("DB_HOST").ToString();
         }
 
         public IConfiguration Configuration { get; }
@@ -32,46 +37,9 @@ namespace Ncovi_Web
             });
 
             #region Swagger
-            var inf1 = new OpenApiInfo
-            {
-                Title = "API v1.0",
-                Version = "v1",
-                Description = "Swashbuckle",
-                TermsOfService = new Uri("http://appointvn.com"),
-                Contact = new OpenApiContact
-                {
-                    Name = "Hao Lee",
-                    Email = "occbuu@gmail.com"
-                },
-                License = new OpenApiLicense
-                {
-                    Name = "Apache 2.0",
-                    Url = new Uri("http://www.apache.org/licenses/LICENSE-2.0.html")
-                }
-            };
-
-            var inf2 = new OpenApiInfo
-            {
-                Title = "API v2.0",
-                Version = "v2",
-                Description = "Swashbuckle",
-                TermsOfService = new Uri("http://appointvn.com"),
-                Contact = new OpenApiContact
-                {
-                    Name = "Hao Lee",
-                    Email = "occbuu@gmail.com"
-                },
-                License = new OpenApiLicense
-                {
-                    Name = "Apache 2.0",
-                    Url = new Uri("http://www.apache.org/licenses/LICENSE-2.0.html")
-                }
-            };
-
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", inf1);
-                c.SwaggerDoc("v2", inf2);
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
             });
             #endregion
         }
@@ -90,16 +58,16 @@ namespace Ncovi_Web
                 app.UseHsts();
             }
 
-            #region
+            #region Add Swagger
             app.UseSwagger();
+
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1.0");
-                c.SwaggerEndpoint("/swagger/v2/swagger.json", "API v2.0");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
-            #endregion
 
             app.UseCors(p => p.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+            #endregion
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
