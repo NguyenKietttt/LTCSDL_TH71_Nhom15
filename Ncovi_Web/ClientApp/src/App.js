@@ -5,13 +5,14 @@ import { Layout, Menu } from "antd";
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
-  AreaChartOutlined,
   WarningOutlined,
   HeartOutlined,
   FileSearchOutlined,
   MedicineBoxOutlined,
+  GlobalOutlined,
+  ContainerOutlined
 } from "@ant-design/icons";
-import { Overview } from './components'
+import { Overview, Precaution } from './components'
 
 const { Header, Sider, Content } = Layout;
 
@@ -23,9 +24,9 @@ export const App = () => {
   }
 
   const mapComponent = {
-    '1': <Overview/>,
+    '1': <Overview isMarkerShown/>,
     '2': 'Symptoms',
-    '3': 'Precautions',
+    '3': <Precaution/>,
     '4': 'Treatment',
     '5': 'Chart',
   }
@@ -40,7 +41,7 @@ export const App = () => {
         }}>Ncov 2019</div>
         <Menu onClick={handleChange} theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
           <Menu.Item key="1">
-            <FileSearchOutlined />
+            <GlobalOutlined />
             <span>Overview</span>
           </Menu.Item>
           <Menu.Item key="2">
@@ -56,20 +57,29 @@ export const App = () => {
             <span>Treatment</span>
           </Menu.Item>
           <Menu.Item key="5">
-            <AreaChartOutlined />
-            <span>Chart</span>
+            <FileSearchOutlined />
+            <span>Viet Nam</span>
+          </Menu.Item>
+          <Menu.Item key="6">
+          <ContainerOutlined />
+            <span>News</span>
           </Menu.Item>
         </Menu>
       </Sider>
-      <Layout theme='dark' className="site-layout">
+      <Layout theme='dark' classNaGlobalOutlinedme="site-layout">
         <Header className="site-layout-background" style={{ padding: 0 }}>
-          {React.createElement(
+          
+          
+          <Menu theme="light" mode="horizontal" defaultSelectedKeys={['2']}>
+          <Menu.Item key="0">{React.createElement(
             collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
             {
               className: "trigger",
               onClick: () => setCollapsed(!collapsed),
             }
-          )}
+          )}</Menu.Item>
+        <Menu.Item key="1">Rua Tay Phong Dich</Menu.Item>
+      </Menu>
         </Header>
         <Content
           className="site-layout-background"

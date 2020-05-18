@@ -1,0 +1,9 @@
+.counter {
+    font-weight: bold;
+    color: red;
+    font-size: 2vw;
+}
+
+.counter > p {
+    margin: 0;
+}
