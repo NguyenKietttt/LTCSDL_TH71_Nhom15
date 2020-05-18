@@ -18,6 +18,8 @@
   text-align: center;
 }
 
-.site-layout .site-layout-background {
-  background: #fff;
+.header {
+  padding: 0;
+  background-color: #166cbd;
+  color: white;
 }

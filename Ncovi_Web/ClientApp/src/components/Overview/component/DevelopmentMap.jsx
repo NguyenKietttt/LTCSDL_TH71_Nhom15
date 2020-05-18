@@ -28,7 +28,7 @@ export const DevelopmentMap = compose(
   useEffect(() => {
     if (places.length < 1) {
       axios
-        .post(`https://ncovweb.azurewebsites.net/api/Country/Get-all`, {})
+        .post(`https://ncovweb.azurewebsites.net/api/Country/Get-all-country-have-cases`, {})
         .then((res) => {
           setPlaces(res.data.data);
         });
@@ -50,7 +50,7 @@ export const DevelopmentMap = compose(
                 lat: parseFloat(place.latitude),
                 lng: parseFloat(place.longitude),
               }}
-              radius={300000}
+              radius={place.confirmed}
               options={{
                 strokeColor: "#ff0000",
               }}

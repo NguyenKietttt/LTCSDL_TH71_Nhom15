@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "antd/dist/antd.css";
 import "./custom.css";
-import { Layout, Menu } from "antd";
+import { Layout, Menu, Space, Typography } from "antd";
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
@@ -10,36 +10,52 @@ import {
   FileSearchOutlined,
   MedicineBoxOutlined,
   GlobalOutlined,
-  ContainerOutlined
+  ContainerOutlined,
 } from "@ant-design/icons";
-import { Overview, Precaution } from './components'
+import { Overview, Precaution, Symptoms, Treatment, News, VietNam } from "./components";
 
 const { Header, Sider, Content } = Layout;
 
 export const App = () => {
   const [collapsed, setCollapsed] = useState(false);
-  const [content, setContent] = useState('1');
-  const handleChange = ({key}) => {
-    setContent(key)
-  }
+  const [content, setContent] = useState("1");
+  const handleChange = ({ key }) => {
+    setContent(key);
+  };
+
+  const { Title } = Typography;
 
   const mapComponent = {
-    '1': <Overview isMarkerShown/>,
-    '2': 'Symptoms',
-    '3': <Precaution/>,
-    '4': 'Treatment',
-    '5': 'Chart',
-  }
+    "1": <Overview isMarkerShown />,
+    "2": <Symptoms />,
+    "3": <Precaution />,
+    "4": <Treatment />,
+    "5": <VietNam />,
+    "6": <News />
+  };
 
   return (
-    <Layout style={{
-      height: '100vh'
-    }}>
+    <Layout
+      style={{
+        height: "100vh",
+        background: "none",
+      }}
+    >
       <Sider trigger={null} collapsible collapsed={collapsed}>
-        <div className="logo" style={{
-          fontSize: collapsed ? '1vw' : '2vw'
-        }}>Ncov 2019</div>
-        <Menu onClick={handleChange} theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
+        <div
+          className="logo"
+          style={{
+            fontSize: collapsed ? "1vw" : "2vw",
+          }}
+        >
+          Ncov 2019
+        </div>
+        <Menu
+          onClick={handleChange}
+          theme="dark"
+          mode="inline"
+          defaultSelectedKeys={["1"]}
+        >
           <Menu.Item key="1">
             <GlobalOutlined />
             <span>Overview</span>
@@ -61,28 +77,34 @@ export const App = () => {
             <span>Viet Nam</span>
           </Menu.Item>
           <Menu.Item key="6">
-          <ContainerOutlined />
+            <ContainerOutlined />
             <span>News</span>
           </Menu.Item>
         </Menu>
       </Sider>
-      <Layout theme='dark' classNaGlobalOutlinedme="site-layout">
-        <Header className="site-layout-background" style={{ padding: 0 }}>
-          
-          
-          <Menu theme="light" mode="horizontal" defaultSelectedKeys={['2']}>
-          <Menu.Item key="0">{React.createElement(
-            collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
-            {
-              className: "trigger",
-              onClick: () => setCollapsed(!collapsed),
-            }
-          )}</Menu.Item>
-        <Menu.Item key="1">Rua Tay Phong Dich</Menu.Item>
-      </Menu>
+      <Layout
+        theme="dark"
+        style={{
+          background: "none",
+        }}
+      >
+        <Header className="header">
+          <Space size={10}>
+            {React.createElement(
+              collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
+              {
+                className: "trigger",
+                onClick: () => setCollapsed(!collapsed),
+              }
+            )}
+            <Space direction="vertical" align="center">
+              <Title style={{ color: "white", marginTop: "4%" }} level={3}>
+                Stay at home, Protect the NHS, Save lives
+              </Title>
+            </Space>
+          </Space>
         </Header>
         <Content
-          className="site-layout-background"
           style={{
             margin: "24px 16px",
             padding: 24,
