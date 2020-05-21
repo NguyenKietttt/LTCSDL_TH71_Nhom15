@@ -136,7 +136,7 @@ namespace Ncov_BLL
 
             return filteredList;
         }
-        public CasesName GetCase_byCountry(string keyWord)
+        public CasesNameReq GetCase_byCountry(string keyWord)
         {
   
             var temp = _rep.GetAllCases_Have_CountryName().FirstOrDefault(p => p.CountryName == keyWord);
