@@ -57,6 +57,10 @@ namespace Ncov_Web.Controllers
 				var countryAsking = pas.Fields["country"].StringValue;
 				string nameCountry = countryAsking;
 				var temp = _svc.GetCase_byCountry(nameCountry);
+				if (temp == null)
+				{
+					sb.Append("I don't know which country do you want.Is it have another name.");
+				}
 				sb.Append("This country have "+ temp.Active + " Active and about" + temp.Deaths + " people died.");
 
 			}
