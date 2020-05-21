@@ -29,15 +29,6 @@ namespace Ncov_BLL
 
             return res;
         }
-
-        public List<CaseReqByCountry> GetCase_ByCountry_FromWeb()
-        {
-            string url = "https://api.covid19api.com/summary";
-
-            List<CaseReqByCountry> listCase = GetData.Instance.ConvertJson_ToClass<CaseReqRoot>(url).Countries;
-
-            return listCase.ToList();
-        }
         #endregion
     }
 }

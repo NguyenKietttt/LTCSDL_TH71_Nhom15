@@ -52,5 +52,27 @@ namespace Ncovi_Web.Controllers
             
             return Ok(res);
         }
+
+        [HttpPost("Get-Case-By-CountryID")]
+        public IActionResult GetCase_By_CountryID([FromBody]string CountryID)
+        {
+            var res = new SingleRsp();
+            var temp = _svc.GetCase_By_CountryID(CountryID);
+
+            res.Data = temp;
+
+            return Ok(res);
+        }
+
+        [HttpPost("Get-Newest-Case-By-CountryID")]
+        public IActionResult GetNewestCases_ByCountryID([FromBody]string CountryID)
+        {
+            var res = new SingleRsp();
+            var temp = _svc.GetNewestCases_ByCountryID(CountryID);
+
+            res.Data = temp;
+
+            return Ok(res);
+        }
     }
 }

@@ -73,7 +73,7 @@ namespace Ncov_BLL
 
             if (patients.Count != 0)
             {
-                var hashedIds = new HashSet<string>(patients.Select(p => p.PatientId));
+                var hashedIds = new HashSet<string>(patients.Select(p => p.PatientId.Trim()));
                 var joinList = patientReqs.Where(p => hashedIds.Contains(p.PatientId)).ToList();
                 var distinctList = patientReqs.Except(joinList).ToList();
 

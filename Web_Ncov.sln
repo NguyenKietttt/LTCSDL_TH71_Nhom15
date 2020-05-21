@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ncov_BLL", "Ncovi_BLL\Ncov_
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ncov_Common", "Ncovi_Common\Ncov_Common.csproj", "{EFBF30C4-6A19-4C99-B69B-AF1D47E9BB77}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jobs", "Jobs\Jobs.csproj", "{6DDAFE80-D5A6-4BA4-BE99-92B8662B092D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{EFBF30C4-6A19-4C99-B69B-AF1D47E9BB77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFBF30C4-6A19-4C99-B69B-AF1D47E9BB77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EFBF30C4-6A19-4C99-B69B-AF1D47E9BB77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DDAFE80-D5A6-4BA4-BE99-92B8662B092D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DDAFE80-D5A6-4BA4-BE99-92B8662B092D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DDAFE80-D5A6-4BA4-BE99-92B8662B092D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DDAFE80-D5A6-4BA4-BE99-92B8662B092D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
