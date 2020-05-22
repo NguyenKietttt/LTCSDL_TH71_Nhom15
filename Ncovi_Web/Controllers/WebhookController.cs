@@ -61,7 +61,7 @@ namespace Ncov_Web.Controllers
 				{
 					sb.Append("I don't know which country do you want.Is it have another name.");
 				}
-				sb.Append("This country have "+ temp.Active + " Active and about" + temp.Deaths + " people died.");
+				sb.Append("This country have "+ temp.Active + " Active and about " + temp.Deaths + " people died.");
 
 			}
 			

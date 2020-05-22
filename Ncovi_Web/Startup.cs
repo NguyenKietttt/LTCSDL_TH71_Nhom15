@@ -29,10 +29,10 @@ namespace Ncovi_Web
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.Configure<IISServerOptions>(options =>
-            {
-                options.AllowSynchronousIO = true;
-            });
+            // services.Configure<IISServerOptions>(options =>
+            // {
+            //     options.AllowSynchronousIO = true;
+            // });
             
             services.AddControllersWithViews();
 

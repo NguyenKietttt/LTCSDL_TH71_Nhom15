@@ -12,7 +12,9 @@ import {
   GlobalOutlined,
   ContainerOutlined,
 } from "@ant-design/icons";
-import { Overview, Precaution, Symptoms, Treatment, News, VietNam } from "./components";
+import { Overview, Precaution, Symptoms, Treatment, News, VietNam} from "./components";
+import KomunicateChat from "./components/chatbot/index.js"
+
 
 const { Header, Sider, Content } = Layout;
 
@@ -112,7 +114,9 @@ export const App = () => {
           }}
         >
           {mapComponent[content]}
+
         </Content>
+        <KomunicateChat/>
       </Layout>
     </Layout>
   );
