@@ -28,7 +28,9 @@ export const Symptoms = () => {
   ];
 
   return (
-    <div>
+    <div style={{
+      marginBottom: 30
+    }}>
       <Divider orientation="left">Triệu chứng thường gặp</Divider>
       <List
         bordered

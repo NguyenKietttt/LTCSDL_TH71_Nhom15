@@ -31,7 +31,9 @@ export const News = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{
+      marginBottom: 30
+    }}>
       <List
         itemLayout="vertical"
         size="large"
