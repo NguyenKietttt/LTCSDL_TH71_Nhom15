@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import "antd/dist/antd.css";
 import { Table } from "antd";
 import axios from "axios";
+import { VietNamStatictis } from "./components/VietNamStatictis";
+import { WorldStatictis } from "./components/WorldStatictis";
+import { InputAutoComplete } from './components/CompareTable/InputAutoComplete';
 import "./styles.scss";
 
 export const VietNam = () => {
   const [listData, setListData] = useState([]);
-  const [worldRecord, setWorldRecord] = useState({});
 
   const columns = [
     {
@@ -42,62 +44,18 @@ export const VietNam = () => {
       .then((res) => {
         setListData(listData.concat(res.data.data));
       });
-
-    axios
-      .post(`https://ncovweb.azurewebsites.net/api/Cases/Get-Global`, {})
-      .then((res) => {
-        setWorldRecord(res.data.data[0]);
-      });
   }, []);
 
   return (
     <div>
       <div className="compare">
-        <div>
-          <div className="vietnam title">
-            <p>VietNam</p>
-          </div>
-          <div className="confirmed statictis">
-            <p>Confirmed</p>
-            <p>0</p>
-          </div>
-          <div className="active statictis">
-            <p>Active</p>
-            <p>0</p>
-          </div>
-          <div className="recover statictis">
-            <p>Recovered</p>
-            <p>0</p>
-          </div>
-          <div className="death statictis">
-            <p>Death</p>
-            <p>0</p>
-          </div>
-        </div>
+        <VietNamStatictis />
         <hr />
-        <div>
-          <div className="world title">
-            <p>World</p>
-          </div>
-          <div className="confirmed statictis">
-            <p>Confirmed</p>
-            <p>{worldRecord.totalConfirmed ? worldRecord.totalConfirmed : 0}</p>
-          </div>
-          <div className="active statictis">
-            <p>Active</p>
-            <p>{worldRecord.totalConfirmed ? worldRecord.totalActive : 0}</p>
-          </div>
-          <div className="recover statictis">
-            <p>Recovered</p>
-            <p>{worldRecord.totalConfirmed ? worldRecord.totalDeaths : 0}</p>
-          </div>
-          <div className="death statictis">
-            <p>Death</p>
-            <p>{worldRecord.totalConfirmed ? worldRecord.totalRecovered : 0}</p>
-          </div>
-        </div>
+        <WorldStatictis />
       </div>
       <Table columns={columns} dataSource={listData} scroll={{ y: 300 }} />
+      <InputAutoComplete/>
     </div>
   );
 };
+

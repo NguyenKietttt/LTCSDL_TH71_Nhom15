@@ -22,17 +22,15 @@ export const DevelopmentMap = compose(
   withGoogleMap
 )(() => {
   useEffect(() => {
-    if (places.length < 1) {
-      axios
-        .post(
-          `https://ncovweb.azurewebsites.net/api/Country/Get-all-country-have-cases`,
-          {}
-        )
-        .then((res) => {
-          setPlaces(res.data.data);
-        });
-    }
-  });
+    axios
+      .post(
+        `https://ncovweb.azurewebsites.net/api/Country/Get-all-country-have-cases`,
+        {}
+      )
+      .then((res) => {
+        setPlaces(res.data.data);
+      });
+  }, []);
 
   const [places, setPlaces] = useState([]);
 
