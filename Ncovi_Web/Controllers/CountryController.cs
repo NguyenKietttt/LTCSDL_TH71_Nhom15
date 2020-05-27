@@ -21,6 +21,7 @@ namespace Ncovi_Web.Controllers
         }
 
         [HttpPost("Get-all")]
+        [Produces("application/json")]
         public IActionResult GetAllCountry()
         {
             var res = new SingleRsp();

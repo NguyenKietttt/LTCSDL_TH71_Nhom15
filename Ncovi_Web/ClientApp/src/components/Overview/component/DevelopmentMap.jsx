@@ -1,13 +1,9 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { compose, withProps } from "recompose";
-import {
-  withScriptjs,
-  withGoogleMap,
-  GoogleMap,
-  Circle,
-} from "react-google-maps";
+import { withScriptjs, withGoogleMap, GoogleMap } from "react-google-maps";
 import "./style.css";
 import axios from "axios";
+import { CountryInfo } from "./CountryInfo";
 
 export const DevelopmentMap = compose(
   withProps({
@@ -26,14 +22,15 @@ export const DevelopmentMap = compose(
   withGoogleMap
 )(() => {
   useEffect(() => {
-    if (places.length < 1) {
-      axios
-        .post(`https://ncovweb.azurewebsites.net/api/Country/Get-all-country-have-cases`, {})
-        .then((res) => {
-          setPlaces(res.data.data);
-        });
-    }
-  });
+    axios
+      .post(
+        `https://ncovweb.azurewebsites.net/api/Country/Get-all-country-have-cases`,
+        {}
+      )
+      .then((res) => {
+        setPlaces(res.data.data);
+      });
+  }, []);
 
   const [places, setPlaces] = useState([]);
 
@@ -45,16 +42,7 @@ export const DevelopmentMap = compose(
       {places.map((place) => {
         return (
           <Fragment key={place.countryId}>
-            <Circle
-              defaultCenter={{
-                lat: parseFloat(place.latitude),
-                lng: parseFloat(place.longitude),
-              }}
-              radius={place.confirmed}
-              options={{
-                strokeColor: "#ff0000",
-              }}
-            />
+            <CountryInfo place={place} />
           </Fragment>
         );
       })}

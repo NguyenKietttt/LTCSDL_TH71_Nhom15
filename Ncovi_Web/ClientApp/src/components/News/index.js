@@ -14,14 +14,14 @@ export const News = () => {
     axios
       .post(`https://ncovweb.azurewebsites.net/api/News/Get-all`, {
         page: page,
-        size: page + 5,
+        size: 5,
         id: 0,
         type: "dfsd",
         keyword: "stdsfsring",
       })
       .then((res) => {
         setListData(listData.concat(res.data.data.data));
-        setPage(page + 5);
+        setPage(page + 1);
         setLoading(false);
       });
   };
@@ -31,7 +31,9 @@ export const News = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{
+      marginBottom: 30
+    }}>
       <List
         itemLayout="vertical"
         size="large"

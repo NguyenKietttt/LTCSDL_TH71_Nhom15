@@ -14,7 +14,9 @@ export const Precaution = () => {
   ];
 
   return (
-    <div>
+    <div style={{
+      marginBottom: 30
+    }}>
       <Divider orientation="left">Thực hiện những việc sau</Divider>
       <List
         bordered

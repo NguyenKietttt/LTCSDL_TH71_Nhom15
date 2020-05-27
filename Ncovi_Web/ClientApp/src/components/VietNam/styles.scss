@@ -1,0 +1,47 @@
+.compare {
+    background-color: #f8f9fa;
+    padding: 2vw;
+    margin: 3vh 0;
+    font-size: 20px;
+    > div {
+        display: flex;
+        justify-content: space-around;
+        .vietnam {
+            background-color: #c9302c;
+        }
+        .world {
+            background-color: #337ab7;
+        }
+        .title {
+            color: #ffffff;
+            border-radius: 20px;
+            padding: 1vw;
+            height: max-content;
+            width: 100px;
+            text-align: center
+            ;
+            > p {
+                margin-top: 14px;
+            }
+        }
+        .statictis {
+            padding: 1vw;
+            font-weight: 800;
+            line-height: 0.5;
+            margin-top: 1%;
+            text-align: center;
+        }
+        .confirmed {
+            color: #c9302c;
+        }
+        .active {
+            color: #ff9c00;
+        }
+        .recover {
+            color: #337ab7;
+        }
+        .death {
+            color: #666666;
+        }
+    }
+}

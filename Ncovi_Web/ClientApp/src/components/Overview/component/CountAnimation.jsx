@@ -19,12 +19,12 @@ export const CountAnimation = () => {
           setStatictis(res.data.data[0]);
         });
     }
-  });
+  }, []);
 
 
   return (
     <Space size={70}>
-      <CountUp start={0} end={statictis.totalConfirmed} duration={5} delay={0}>
+      <CountUp start={0} end={statictis.totalConfirmed} duration={3} delay={0}>
         {({ countUpRef }) => (
           <div className="counter">
             <p>Confirmed</p>

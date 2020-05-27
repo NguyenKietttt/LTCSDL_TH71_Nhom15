@@ -16,7 +16,9 @@ export const Treatment = () => {
   const { Paragraph } = Typography;
 
   return (
-    <div>
+    <div style={{
+      marginBottom: 30
+    }}>
       <Divider orientation="left">Tự chăm sóc</Divider>
       <List
         bordered
