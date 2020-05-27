@@ -52,10 +52,16 @@ export const InputAutoComplete = () => {
 
   return (
     <div>
+      <div style={{
+        marginTop: 50,
+        marginBottom: 50,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-around',
+        height: 200,
+        width: '50vw'
+      }}>
       <AutoComplete
-        style={{
-          width: 200,
-        }}
         onChange={(value) => choiceNation(value, setFirstNation)}
         options={listNation}
         placeholder="Input Nation"
@@ -64,9 +70,6 @@ export const InputAutoComplete = () => {
         }
       />
       <AutoComplete
-        style={{
-          width: 200,
-        }}
         onChange={(value) => choiceNation(value, setSecondNation)}
         options={listNation}
         placeholder="Input Nation"
@@ -77,9 +80,11 @@ export const InputAutoComplete = () => {
       <Button type="primary" loading={loading} onClick={submitEvent}>
         Submit
       </Button>
+      </div>
       <div
         style={{
           height: 600,
+          marginBottom: '20vh'
         }}
       >
         <ChartLineComponent

@@ -83,7 +83,7 @@ const ChartLine = (props) => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: "transportation",
+        legend: "Time",
         legendOffset: 36,
         legendPosition: "middle",
       }}
@@ -92,7 +92,7 @@ const ChartLine = (props) => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: "count",
+        legend: "Case Confirmed",
         legendOffset: -40,
         legendPosition: "middle",
       }}
