@@ -59,7 +59,7 @@ namespace Ncovi_Web
                 app.UseHsts();
             }
 
-            #region Add Swagger
+            #region Swagger
             app.UseSwagger();
 
             app.UseSwaggerUI(c =>
