@@ -9,6 +9,7 @@ import "./styles.scss";
 
 export const VietNam = () => {
   const [listData, setListData] = useState([]);
+  const [listPatients, setListPatients] = useState([]);
 
   const columns = [
     {
@@ -37,6 +38,33 @@ export const VietNam = () => {
       sorter: (a, b) => a.deaths - b.deaths,
     },
   ];
+  const columns1 = [
+    {
+      title: "Bệnh nhân ",
+      dataIndex: "patientId",
+      sorter: (a, b) => a.patientId.toString().localeCompare(b.patientId),
+    },
+    {
+      title: "Tuổi",
+      dataIndex: "age",
+      sorter: (a, b) => a.age - b.age,
+    },
+    {
+      title: "Giới tính",
+      dataIndex: "sex",
+      sorter: (a, b) => a.sex - b.sex,
+    },
+    {
+      title: "Địa Điểm",
+      dataIndex: "cityName",
+      sorter: (a, b) => a.cityName - b.cityName,
+    },
+    {
+      title: "Tình trạng",
+      dataIndex: "status",
+      sorter: (a, b) => a.status - b.status,
+    },
+  ];
 
   useEffect(() => {
     axios
@@ -44,7 +72,15 @@ export const VietNam = () => {
       .then((res) => {
         setListData(listData.concat(res.data.data));
       });
+    axios
+      .post("https://ncovbot.azurewebsites.net/api/Patient/Get-all", {})
+      .then((res) => {
+        setListPatients(listPatients.concat(res.data.data));
+      });
+      
+
   }, []);
+      
 
   return (
     <div>
@@ -54,6 +90,7 @@ export const VietNam = () => {
         <WorldStatictis />
       </div>
       <Table columns={columns} dataSource={listData} scroll={{ y: 300 }} />
+      <Table columns={columns1} dataSource={listPatients} scroll={{ y: 300 }} />
       <InputAutoComplete/>
     </div>
   );
