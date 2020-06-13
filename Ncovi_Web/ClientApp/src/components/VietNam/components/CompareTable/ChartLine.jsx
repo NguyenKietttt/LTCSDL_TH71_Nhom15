@@ -67,7 +67,7 @@ const ChartLine = (props) => {
   return (
     <ResponsiveLine
       data={dataFirst.id ? [dataFirst, dataSecond] : []}
-      margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+      margin={{ top: 50, right: 110, bottom: 100, left: 60 }}
       xScale={{ type: "point" }}
       yScale={{
         type: "linear",
@@ -80,12 +80,13 @@ const ChartLine = (props) => {
       axisRight={null}
       axisBottom={{
         orient: "bottom",
-        tickSize: 5,
-        tickPadding: 5,
-        tickRotation: 0,
+        tickSize: 0,
+        tickPadding: 10,
         legend: "Time",
-        legendOffset: 36,
+        legendOffset: 75,
+        tickRotation: -61,
         legendPosition: "middle",
+
       }}
       axisLeft={{
         orient: "left",

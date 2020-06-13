@@ -39,8 +39,9 @@ namespace Ncov_Web.Controllers
 			var pas = request.QueryResult.Parameters;
 			var askingName = pas.Fields.ContainsKey("name") && pas.Fields["name"].ToString().Replace('\"', ' ').Trim().Length > 0;
 			var askingCountryCase = pas.Fields.ContainsKey("country");
+			var askingCase = pas.Fields.ContainsKey("case");
 
-			
+
 			var response = new WebhookResponse();
 			
 	
@@ -53,7 +54,7 @@ namespace Ncov_Web.Controllers
 				sb.Append("The name of library is: "+name+"; ");
 			}
 
-			if (askingCountryCase) {
+			if (askingCountryCase && askingCase) {
 				var countryAsking = pas.Fields["country"].StringValue;
 				string nameCountry = countryAsking;
 				var temp = _svc.GetCase_byCountry(nameCountry);
@@ -61,7 +62,7 @@ namespace Ncov_Web.Controllers
 				{
 					sb.Append("I don't know which country do you want.Is it have another name.");
 				}
-				sb.Append("This country have "+ temp.Active + " Active and about " + temp.Deaths + " people died.");
+				sb.Append("This country have "+ temp.Active + " Active and about " + temp.Deaths + " people died and total "+temp.Confirmed +" people confirmed.");
 
 			}
 			

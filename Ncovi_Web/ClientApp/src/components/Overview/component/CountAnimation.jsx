@@ -23,8 +23,8 @@ export const CountAnimation = () => {
 
 
   return (
-    <Space size={70}>
-      <CountUp start={0} end={statictis.totalConfirmed} duration={3} delay={0}>
+    <Space className="space" size={70} >
+      <CountUp  start={0} end={statictis.totalConfirmed} duration={3} delay={0}>
         {({ countUpRef }) => (
           <div className="counter">
             <p>Confirmed</p>

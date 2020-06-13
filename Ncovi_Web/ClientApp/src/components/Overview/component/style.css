@@ -2,8 +2,14 @@
     font-weight: bold;
     color: red;
     font-size: 2vw;
+    text-align: center;
 }
 
 .counter > p {
     margin: 0;
+}
+.space {
+    display: flex;
+    justify-content: center;
+    padding:5 ;
 }
