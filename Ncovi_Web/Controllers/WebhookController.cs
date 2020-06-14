@@ -40,11 +40,11 @@ namespace Ncov_Web.Controllers
 			//check paramater 
 			var pas = request.QueryResult.Parameters;
 			var askingName = pas.Fields.ContainsKey("name") && pas.Fields["name"].ToString().Replace('\"', ' ').Trim().Length > 0;
-			var askingCountry = pas.Fields.ContainsKey("country");
-			var askingCase = pas.Fields.ContainsKey("case");
-			var askingAlive = pas.Fields.ContainsKey("alive");
-			var askingDead = pas.Fields.ContainsKey("dead");
-			var askingGlobal = pas.Fields.ContainsKey("global");
+			//var askingCountry = pas.Fields.ContainsKey("country");
+			//var askingCase = pas.Fields.ContainsKey("case");
+			//var askingAlive = pas.Fields.ContainsKey("alive");
+			//var askingDead = pas.Fields.ContainsKey("dead");
+			//var askingGlobal = pas.Fields.ContainsKey("global");
 
 			//create response 
 			var response = new WebhookResponse();
@@ -60,31 +60,39 @@ namespace Ncov_Web.Controllers
 			}
 			//get value from CasesSvc by country-code
 			var countryAsking = pas.Fields["country"].StringValue;
+			var caseAsking = pas.Fields["case"].StringValue;
+			var aliveAsking = pas.Fields["alive"].StringValue;
+			var deadAsking = pas.Fields["dead"].StringValue;
+			var globalAsking = pas.Fields["global"].StringValue; 
+
+
 			string nameCountry = countryAsking;
 			var temp = _svc.GetCase_byCountry(nameCountry);
 
+			if (globalAsking != "")
+			{
+
+				sb.Append("You can go back on our overview page to check this infromation. ");
+			}
 			if (temp == null)
 			{
 				sb.Append("I don't know which country do you want.Is it have another name.");
 			}
 			else {
-				if (askingGlobal) {
+				
 
-					sb.Append("You can go back on our overview page to check this infromation. ");
-				}
-
-				if (askingCountry && askingCase && !askingAlive && !askingDead) {
+				if (countryAsking != "" && caseAsking!="" && aliveAsking=="" && deadAsking == "") {
 						sb.Append("This country have " + temp.Active + " Active and about " + temp.Deaths + " people died and total " + temp.Confirmed + " people confirmed.");
 		
 				}
-				if (askingCountry && askingAlive || (askingCountry && askingCase && askingAlive)) {
+				if (countryAsking != "" && aliveAsking !="" || (caseAsking != "" && countryAsking != "" && aliveAsking != "")) {
 
 					sb.Append("The " + temp.CountryName + " have " + temp.Active + " alive people ");
 
 				}
-				if (askingCountry && askingDead || (askingCountry && askingCase && askingDead))
+				if (countryAsking != "" && deadAsking != "" || (caseAsking != "" && countryAsking != "" && deadAsking != ""))
 				{
-					if (askingAlive)
+					if (aliveAsking != "")
 					{
 						sb.Append("and they" + " have " + temp.Deaths + " dead people ");
 					}
@@ -93,7 +101,7 @@ namespace Ncov_Web.Controllers
 						sb.Append("The " + temp.CountryName + " have " + temp.Deaths + " dead people ");
 					}
 				}
-				if (askingCountry && !askingCase && !askingAlive && !askingDead)
+				if (countryAsking != "" && caseAsking == "" && aliveAsking =="" && deadAsking =="")
 				{
 					
 						sb.Append("Which information do you want from " + temp.CountryName + ". Ex: case, dead people, alive,... ");
