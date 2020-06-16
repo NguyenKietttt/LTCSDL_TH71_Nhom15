@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Ncov_BLL;
+using Ncov_DAL;
 using Ncovi_Common.Rsp;
 
 namespace Ncov_Web.Controllers
@@ -21,7 +22,7 @@ namespace Ncov_Web.Controllers
         }
 
         [HttpGet("Add")]
-        public IActionResult GetAllCountry()
+        public IActionResult AddNews()
         {
             var res = new SingleRsp();
 
@@ -31,11 +32,12 @@ namespace Ncov_Web.Controllers
         }
 
         [HttpPost("Get-all")]
-        public IActionResult GetAllNews()
+        public IActionResult GetCasePages([FromBody]PageReq req)
         {
             var res = new SingleRsp();
+            var temp = _svc.GetNewsPage(req.Keyword = "", req.Page, req.Size);
 
-            res = _svc.GetListNews();
+            res.Data = temp;
 
             return Ok(res);
         }

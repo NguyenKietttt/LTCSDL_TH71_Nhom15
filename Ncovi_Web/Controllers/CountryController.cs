@@ -20,13 +20,13 @@ namespace Ncovi_Web.Controllers
             _svc = new CountrySvc();
         }
 
-        [HttpPost("Get-all")]
+        [HttpPost("Get-all-country-have-cases")]
         [Produces("application/json")]
-        public IActionResult GetAllCountry()
+        public IActionResult GetAllCountry_Have_Cases()
         {
             var res = new SingleRsp();
 
-            res = _svc.GetAllCountry();
+            res = _svc.GetAllCountry_Have_Cases();
 
             return Ok(res);
         }
