@@ -71,6 +71,6 @@ Chat-bot support user provide  Covid information(dialogflow)
 * Nguyễn Đỗ Tuấn Kiệt (Back-End)
 
 ## Demo
-Click the [link]([https://ncovweb.azurewebsites.net/](https://ncovweb.azurewebsites.net/)) to see web demo
+Click the [link](https://ncovweb.azurewebsites.net/) to see web demo
 
 
