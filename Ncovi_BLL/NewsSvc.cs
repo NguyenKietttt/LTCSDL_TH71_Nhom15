@@ -45,6 +45,27 @@ namespace Ncov_BLL
             return res;
         }
 
+        public object GetNewsPage(string keyWord, int page, int size)
+        {
+            var temp = _rep.GetListNews();
+
+            var offSet = (page - 1) * size;
+            var total = temp.Count();
+            int totalPage = (total % size) == 0 ? (int)(total / size) : (int)((total / size) + 1);
+            var data = temp.OrderByDescending(p => p.Date).Skip(offSet).Take(size).ToList();
+
+            var res = new
+            {
+                Data = data,
+                totalRecord = total,
+                totalPages = totalPage,
+                Page = page,
+                Size = size
+            };
+
+            return res;
+        }
+
         private List<NewsReq> GetNews_FromWeb()
         {
             List<NewsReq> listNewsReq = new List<NewsReq>();
@@ -80,7 +101,15 @@ namespace Ncov_BLL
 
             var hashedIds = new HashSet<string>(All.Select(p => p.Link));
             var joinList = temp.Where(p => hashedIds.Contains(p.Link)).ToList();
-            var distinctList = temp.Except(joinList).ToList();
+            var distinctList = temp.OrderBy(p => p.Date).Except(joinList).ToList();
+
+            int newsCount = All.Max(p => p.NewId) + 1;
+
+            for (int i = 0; i < distinctList.Count; i++)
+            {
+                distinctList[i].NewId = newsCount;
+                newsCount++;
+            }
 
             return distinctList;
         }
@@ -90,12 +119,6 @@ namespace Ncov_BLL
             HtmlDocument htmlDocument = new HtmlDocument();
             htmlDocument.LoadHtml(url);
             var nodes = htmlDocument.DocumentNode.SelectNodes(xpath).ToList();
-
-            int newsCount = All.Select(p => p.NewId).Count();
-            if (newsCount != 0)
-            {
-                NewsReq.iD = newsCount;
-            }
 
             nodes.ForEach(p => listNewsReq.Add(new NewsReq
             {

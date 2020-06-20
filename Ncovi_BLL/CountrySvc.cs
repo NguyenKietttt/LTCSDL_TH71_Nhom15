@@ -29,6 +29,16 @@ namespace Ncov_BLL
 
             return res;
         }
+
+        public SingleRsp GetAllCountry_Have_Cases()
+        {
+            var res = new SingleRsp();
+
+            var listCountries = _rep.GetAllCountry_Have_Cases();
+            res.Data = listCountries;
+
+            return res;
+        }
         #endregion
     }
 }

@@ -53,7 +53,7 @@ namespace Ncovi_Web.Controllers
             return Ok(res);
         }
 
-        [HttpPost("Get-Case-By-CountryID")]
+        [HttpPost("Get-Cases-By-CountryID")]
         public IActionResult GetCase_By_CountryID([FromBody]string CountryID)
         {
             var res = new SingleRsp();

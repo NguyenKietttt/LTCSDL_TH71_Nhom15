@@ -7,8 +7,6 @@ namespace Ncov_Common.Req
 {
     public class NewsReq
     {
-        public static int iD = 0;
-
         public int NewId { get; set; }
 
         public DateTime? Date { get; set; }
@@ -20,10 +18,5 @@ namespace Ncov_Common.Req
         public string Title { get; set; }
 
         public string Description { get; set; }
-
-        public NewsReq()
-        {
-            NewId = Interlocked.Increment(ref iD);
-        }
     }
 }
