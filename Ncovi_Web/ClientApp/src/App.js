@@ -116,7 +116,7 @@ export const App = () => {
           {mapComponent[content]}
 
         </Content>
-        <KomunicateChat/>
+        {/* <KomunicateChat/> */}
       </Layout>
     </Layout>
   );

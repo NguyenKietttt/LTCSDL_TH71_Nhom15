@@ -9,6 +9,7 @@
       manifest.json provides metadata used when your web app is added to the
       homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
     -->
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
     <!--
@@ -23,6 +24,14 @@
     <title>Ncovi_Web</title>
   </head>
   <body>
+    <df-messenger
+  intent="WELCOME"
+  chat-title="test-bot"
+  agent-id="d71ec257-7439-49fd-b5a0-30cfaf8e2443"
+  language-code="en"> 
+  </df-messenger>
+    
+
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
