@@ -19,8 +19,8 @@ namespace Ncovi_Web
             Configuration = configuration;
 
             // Add connection string from environment variable.
-            DotEnv.Config();
-            Ncov_DAL.Models.NcovContext.myConnection = Environment.GetEnvironmentVariable("DB_HOST").ToString();
+            //DotEnv.Config();
+            //Ncov_DAL.Models.NcovContext.myConnection = Environment.GetEnvironmentVariable("DB_HOST").ToString();
         }
 
         public IConfiguration Configuration { get; }
