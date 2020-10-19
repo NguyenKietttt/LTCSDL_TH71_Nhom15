@@ -1,0 +1,26 @@
+version: "3"
+services:
+    web:
+        build: .
+        ports:
+            - "5000:5000"
+        depends_on:
+            - db
+    ncovidfront:
+        build: '../ncovid-frontend'
+        ports:
+            - "3004:3000"
+        volumes:
+            - "~/test-microservices/ncovid-frontend:/app"
+            - /app/node_modules
+        environment:
+            ENDPOINT: http://web:5000
+        links:
+            - web
+    db:
+        build:
+            context: .
+            dockerfile: Dockerfiledb
+        environment:
+            SA_PASSWORD: "Your_password123"
+            ACCEPT_EULA: "Y"
